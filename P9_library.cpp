@@ -14,6 +14,13 @@ bookName = "Unknown";
 author = "Unknown";
 price = 0;
 }
+Library(int id, string name, string auth, float pr)
+{
+bookID = id;
+bookName = name;
+author = auth;
+price = pr;
+}
 void getData()
 {
 cout << "Enter book ID: ";
@@ -35,8 +42,13 @@ cout << "\nPrice: " << price << endl;
 };
 int main()
 {
-Library b;
-b.getData();
-b.display();
+Library b1;                                   // default constructor
+Library b2(102, "Wings_of_Fire", "Kalam", 450); // parameterized constructor
+cout << "Enter details of first book:\n";
+b1.getData();
+cout << "\nFirst book:";
+b1.display();
+cout << "\nSecond book (parameterized constructor):";
+b2.display();
 return 0;
 }
