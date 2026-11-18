@@ -82,7 +82,7 @@ void fill4(int x, int y, int fillc, int other, int mode)
 
 void main()
 {
-    int gd = DETECT, gm, ch;
+    int gd = DETECT, gm, ch, col;
     initgraph(&gd, &gm, "C:\\TURBOC3\\BGI");
 
     cout << "1. Scan-line fill";
@@ -90,20 +90,25 @@ void main()
     cout << "\n3. Flood fill";
     cout << "\nEnter choice: ";
     cin >> ch;
+    cout << "\nColours: 1 Blue 2 Green 3 Cyan 4 Red 5 Magenta 6 Brown 14 Yellow";
+    cout << "\nEnter fill colour number (1-14): ";
+    cin >> col;
+    if (col < 1 || col > 14)
+        col = GREEN;                 // default if invalid
     cleardevice();
 
     drawPolygon();
     switch (ch)
     {
         case 1:
-            scanFill(GREEN);
+            scanFill(col);
             drawPolygon();
             break;
         case 2:
-            fill4(270, 170, GREEN, WHITE, 1);      // seed inside, boundary = WHITE
+            fill4(270, 170, col, WHITE, 1);      // seed inside, boundary = WHITE
             break;
         case 3:
-            fill4(270, 170, GREEN, BLACK, 2);      // seed inside, old colour = BLACK
+            fill4(270, 170, col, BLACK, 2);      // seed inside, old colour = BLACK
             break;
         default:
             cout << "Invalid Choice";
